@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Warm, food-inspired palette */
+    --background: 40 33% 97%;
+    --foreground: 25 30% 15%;
+
+    --card: 40 30% 99%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 40 30% 99%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Terracotta primary */
+    --primary: 18 70% 55%;
+    --primary-foreground: 40 30% 99%;
+
+    /* Sage green secondary */
+    --secondary: 145 25% 88%;
+    --secondary-foreground: 145 35% 30%;
+
+    --muted: 35 20% 92%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Warm accent */
+    --accent: 35 80% 60%;
+    --accent-foreground: 25 30% 15%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 40 30% 99%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 18 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom semantic tokens */
+    --surface-warm: 35 40% 96%;
+    --surface-sage: 145 30% 94%;
+    --text-soft: 25 15% 55%;
+    
+    /* Comfort ring colors */
+    --ring-core: 145 50% 45%;
+    --ring-stretch: 200 70% 50%;
+    --ring-experimental: 350 70% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 40 25% 95%;
+
+    --card: 25 20% 14%;
+    --card-foreground: 40 25% 95%;
+
+    --popover: 25 20% 14%;
+    --popover-foreground: 40 25% 95%;
+
+    --primary: 18 70% 58%;
+    --primary-foreground: 25 25% 10%;
+
+    --secondary: 145 20% 20%;
+    --secondary-foreground: 145 30% 80%;
+
+    --muted: 25 15% 20%;
+    --muted-foreground: 35 15% 60%;
+
+    --accent: 35 70% 50%;
+    --accent-foreground: 25 25% 10%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 30% 99%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 18 70% 58%;
+
+    --surface-warm: 25 20% 15%;
+    --surface-sage: 145 15% 18%;
+    --text-soft: 35 15% 55%;
+    
+    --ring-core: 145 45% 40%;
+    --ring-stretch: 200 60% 45%;
+    --ring-experimental: 350 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+  }
+}
+
+@layer components {
+  .section-card {
+    @apply bg-card rounded-xl border border-border p-6 shadow-sm;
+  }
+
+  .dimension-selector {
+    @apply flex gap-2;
+  }
+
+  .dimension-option {
+    @apply flex-1 py-3 px-4 rounded-lg border-2 border-border text-center font-medium 
+           transition-all duration-200 cursor-pointer hover:border-primary/50;
+  }
+
+  .dimension-option[data-selected="true"] {
+    @apply border-primary bg-primary text-primary-foreground;
+  }
+
+  .multi-select-chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border
+           text-sm font-medium transition-all duration-200 cursor-pointer hover:border-primary/50;
+  }
+
+  .multi-select-chip[data-selected="true"] {
+    @apply border-primary bg-primary/10 text-primary;
+  }
+
+  .comfort-ring {
+    @apply rounded-xl p-5 border;
+  }
+
+  .comfort-ring-core {
+    @apply bg-[hsl(var(--ring-core)/0.08)] border-[hsl(var(--ring-core)/0.3)];
+  }
+
+  .comfort-ring-stretch {
+    @apply bg-[hsl(var(--ring-stretch)/0.08)] border-[hsl(var(--ring-stretch)/0.3)];
+  }
+
+  .comfort-ring-experimental {
+    @apply bg-[hsl(var(--ring-experimental)/0.08)] border-[hsl(var(--ring-experimental)/0.3)];
+  }
+
+  .ring-badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-white;
+  }
+
+  .ring-badge-core {
+    @apply bg-[hsl(var(--ring-core))];
+  }
+
+  .ring-badge-stretch {
+    @apply bg-[hsl(var(--ring-stretch))];
+  }
+
+  .ring-badge-experimental {
+    @apply bg-[hsl(var(--ring-experimental))];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
